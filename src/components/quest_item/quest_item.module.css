@@ -1,0 +1,28 @@
+@value bodyColor from '../../common/color.css';
+
+.questitem{
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid rgb(235, 235, 235);
+    padding: 0.4rem 1.2rem;
+}
+
+
+.questitem:hover{
+    background-color: rgb(235, 235, 235);
+}
+
+.questitem svg{
+    align-self: center;
+    cursor: pointer;
+}
+
+.questitem svg:hover{
+    color : rgb(126, 126, 126);
+}
+
+.questtext{
+    flex: 1;
+    text-align: left;
+    padding-left: 0.4rem;
+}

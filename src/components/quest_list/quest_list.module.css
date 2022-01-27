@@ -1,0 +1,9 @@
+@value bodyColor from '../../common/color.css';
+
+.list{
+    background-color: bodyColor;
+    display: flex;
+    flex-direction: column;
+    width : 100%;
+    align-items: stretch;
+}

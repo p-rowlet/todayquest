@@ -31,3 +31,9 @@
     color:rgb(126, 126, 126);
     text-decoration : line-through;
 }
+
+.deleteicon{
+    background-color: transparent;
+    outline: none;
+    border : none;
+}

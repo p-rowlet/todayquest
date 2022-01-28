@@ -1,31 +1,31 @@
 @value bodyColor, titleColor2, titleColor3 from '../../common/color.css';
 
-.addform{
-    display: flex;
-    align-self: stretch;
-    background-color: bodyColor;
+.addform {
+	display: flex;
+	align-self: stretch;
+	background-color: bodyColor;
 }
 
-.addinput{
-    height: 2rem;
-    width: 100%;
-    flex : 1;
-    border: none;
-    outline: none;
-    padding : 0.5rem;
+.addinput {
+	height: 2rem;
+	width: 100%;
+	flex: 1;
+	border: none;
+	outline: none;
+	padding: 0.5rem;
 }
 
-.addbutton{
-    cursor: pointer;
-    width : 3rem;
-    font-weight: bolder;
-    font-size: 1.4rem;
-    color: bodyColor;
-    border: none;
-    outline: none;
-    background-color: titleColor2;
+.addbutton {
+	cursor: pointer;
+	width: 3rem;
+	font-weight: bolder;
+	font-size: 1.4rem;
+	color: bodyColor;
+	border: none;
+	outline: none;
+	background-color: titleColor2;
 }
 
-.addbutton:hover{
-    background-color: titleColor3;
+.addbutton:hover {
+	background-color: titleColor3;
 }

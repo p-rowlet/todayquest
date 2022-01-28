@@ -8,7 +8,7 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 1rem;
-	overflow : hidden;
+	overflow: hidden;
 	box-shadow: 0px 0px 5px -1px #000000;
 }
 
@@ -23,32 +23,32 @@
 	align-self: stretch;
 	padding: 1rem;
 	background-color: titleColor;
-	display : flex;
-	justify-content : flex-end;
+	display: flex;
+	justify-content: flex-end;
 }
 
-.option button{
-	padding : 0.4rem;
-	margin-left : 1rem;
-	outline :0;
+.option button {
+	padding: 0.4rem;
+	margin-left: 1rem;
+	outline: 0;
 	border: 0;
-	border-radius : 0.4rem;
-	color : white;
+	border-radius: 0.4rem;
+	color: white;
 	cursor: pointer;
 }
 
-.allcheck{
-	background : rgb(38, 155, 38);
+.allcheck {
+	background: rgb(38, 155, 38);
 }
 
-.allcheck:hover{
-	background : rgb(59, 182, 59);
+.allcheck:hover {
+	background: rgb(59, 182, 59);
 }
 
-.alldelete{
-	background : rgb(179, 37, 37);
+.alldelete {
+	background: rgb(179, 37, 37);
 }
 
-.alldelete:hover{
+.alldelete:hover {
 	background: rgb(214, 65, 65);
 }

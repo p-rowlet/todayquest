@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import styles from "./quest_insert.module.css";
 
-const QuestInsert = (props) => {
+const QuestInsert = ({onAddQuest}) => {
+	const inputRef = useRef();
+	const formRef = useRef();
+	const onSubmit = e =>{
+		e.preventDefault();
+		const name = inputRef.current.value;
+		name && onAddQuest(name);
+		formRef.current.reset();
+	}
+
 	return (
-		<form className={styles.addform}>
+		<form ref={formRef} className={styles.addform} onSubmit={onSubmit}>
 			<input
+				ref={inputRef}
 				className={styles.addinput}
 				type="text"
 				placeholder="오늘의 퀘스트를 입력하세요!"

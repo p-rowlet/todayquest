@@ -13,12 +13,18 @@ const QuestTemplate = (props) => {
 		]
 	);
 
+	const addQuest = name =>{
+		const quests = [...quest, {questName : name, check:false, id : Date.now()}];
+		setQuest(quests);
+	}
+
+
 	return (
 		<div className={styles.container}>
 			<header className={styles.title}>
 				<h1>Today Quest</h1>
 			</header>
-			<QuestInsert />
+			<QuestInsert onAddQuest={addQuest} />
 			<QuestList quest={quest} key={quest.id}/>
 			<div className={styles.option}>
 				<button className={styles.allcheck}>전체 체크</button>

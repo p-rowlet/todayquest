@@ -18,6 +18,18 @@ const QuestTemplate = (props) => {
 		setQuest(quests);
 	}
 
+	const checkQuest = questItem =>{
+		const quests = quest.map(item => {
+			if(questItem.id === item.id){
+				const questcheck = questItem.check ? false : true;
+				return {...questItem, check : questcheck};
+			}else{
+				return item;
+			}
+		});
+		setQuest(quests);
+	}
+
 
 	return (
 		<div className={styles.container}>
@@ -25,7 +37,7 @@ const QuestTemplate = (props) => {
 				<h1>Today Quest</h1>
 			</header>
 			<QuestInsert onAddQuest={addQuest} />
-			<QuestList quest={quest} key={quest.id}/>
+			<QuestList quest={quest} key={quest.id} onCheck={checkQuest}/>
 			<div className={styles.option}>
 				<button className={styles.allcheck}>전체 체크</button>
 				<button className={styles.alldelete}>전체 삭제</button>

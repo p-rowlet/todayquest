@@ -1,8 +1,7 @@
-import React, { useRef } from "react";
+import React, { memo } from "react";
 import styles from "./quest_item.module.css";
 
-const QuestItem = ({ quest, onCheck, onDelete }) => {
-	const checkRef = useRef();
+const QuestItem = memo(({ quest, onCheck, onDelete }) => {
 	const onChange = (e) => {
 		onCheck(quest);
 	};
@@ -18,7 +17,6 @@ const QuestItem = ({ quest, onCheck, onDelete }) => {
 				onChange={onChange}
 				name="list"
 				checked={quest.check ? true : false}
-				ref={checkRef}
 				className={styles.check}
 			/>
 			<p
@@ -35,6 +33,6 @@ const QuestItem = ({ quest, onCheck, onDelete }) => {
 			</button>
 		</article>
 	);
-};
+});
 
 export default QuestItem;

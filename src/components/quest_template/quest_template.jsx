@@ -1,47 +1,48 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import QuestInsert from "../quest_Insert/quest_insert";
 import QuestList from "../quest_list/quest_list";
 import styles from "./quest_template.module.css";
 
 const QuestTemplate = (props) => {
-	const [quest, setQuest] = useState([]);
+	const [quest, setQuest] = useState([
+		
+	]);
 
-	const addQuest = (name) => {
-		const quests = [
+	const addQuest = useCallback((questName) => {
+		setQuest((quest) => [
 			...quest,
-			{ questName: name, check: false, id: Date.now() },
-		];
-		setQuest(quests);
-	};
+			{ questName, check: false, id: Date.now() },
+		]);
+	}, []);
 
-	const deleteQuest = (questItem) => {
-		const quests = quest.filter((item) => item.id !== questItem.id);
-		setQuest(quests);
-	};
+	const deleteQuest = useCallback((questItem) => {
+		setQuest((quest) => quest.filter((item) => item.id !== questItem.id));
+	}, []);
 
-	const checkQuest = (questItem) => {
-		const quests = quest.map((item) => {
-			if (questItem.id === item.id) {
-				const questcheck = questItem.check ? false : true;
-				return { ...questItem, check: questcheck };
-			} else {
-				return item;
-			}
-		});
-		setQuest(quests);
-	};
+	const checkQuest = useCallback((questItem) => {
+		setQuest((quest) =>
+			quest.map((item) => {
+				if (questItem.id === item.id) {
+					const questcheck = questItem.check ? false : true;
+					return { ...questItem, check: questcheck };
+				} else {
+					return item;
+				}
+			})
+		);
+	}, []);
 
-	const questCheckAll = () => {
-		const quests = quest.map((item) => {
-			item.check = true;
-			return item;
-		});
-		setQuest(quests);
-	};
+	const questCheckAll = useCallback(() => {
+		setQuest((quest) =>
+			quest.map((item) => {
+				return {...item, check : true};
+			})
+		);
+	}, []);
 
-	const questDeleteAll = () => {
+	const questDeleteAll = useCallback(() => {
 		setQuest([]);
-	};
+	},[]);
 
 	return (
 		<div className={styles.container}>
@@ -51,7 +52,7 @@ const QuestTemplate = (props) => {
 			<QuestInsert onAddQuest={addQuest} />
 			<QuestList
 				quest={quest}
-				key={quest.id}
+				key={quest.key}
 				onCheck={checkQuest}
 				onDelete={deleteQuest}
 			/>

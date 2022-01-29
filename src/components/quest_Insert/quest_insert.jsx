@@ -1,15 +1,15 @@
-import React, { useCallback, useRef } from "react";
+import React, { memo, useCallback, useRef } from "react";
 import styles from "./quest_insert.module.css";
 
-const QuestInsert = ({onAddQuest}) => {
+const QuestInsert = memo(({ onAddQuest }) => {
 	const inputRef = useRef();
 	const formRef = useRef();
-	const onSubmit = e =>{
+	const onSubmit = (e) => {
 		e.preventDefault();
 		const name = inputRef.current.value;
 		name && onAddQuest(name);
 		formRef.current.reset();
-	}
+	};
 
 	return (
 		<form ref={formRef} className={styles.addform} onSubmit={onSubmit}>
@@ -22,6 +22,6 @@ const QuestInsert = ({onAddQuest}) => {
 			<button className={styles.addbutton}>+</button>
 		</form>
 	);
-};
+});
 
 export default QuestInsert;

@@ -19,6 +19,6 @@
     border-bottom: 3px solid bodyColor;
 }
 
-.category button:hover, .category.active{
+.category button:hover, .category .active{
     border-bottom: 3px solid titleColor;
 }

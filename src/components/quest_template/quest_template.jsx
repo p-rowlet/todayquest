@@ -9,6 +9,9 @@ const QuestTemplate = (props) => {
 		
 	]);
 
+	const categoryList =  ["All", "Working", "Complete"]
+	const [category, setCategory] = useState(categoryList[0]);
+
 	const addQuest = useCallback((questName) => {
 		setQuest((quest) => [
 			...quest,
@@ -45,16 +48,35 @@ const QuestTemplate = (props) => {
 		setQuest([]);
 	},[]);
 
+	const getCategory = useCallback((category)=>{
+		setCategory(category);
+	},[])
+
+	const categozingItem = useCallback((category, quest)=>{
+		switch(category){
+			case "All" : 
+				return quest;
+			case "Working":
+				return quest.filter(quest => quest.check === false);
+			case "Complete":
+				return quest.filter(quest => quest.check === true);
+			default:
+				throw new Error("잘못된 분류입니다");
+		}
+	},[]);
+
+	const categorized = categozingItem(category, quest);
+
 	return (
 		<div className={styles.container}>
 			<header className={styles.title}>
 				<h1>Today Quest</h1>
 			</header>
-			<QuestCategory/>
+			<QuestCategory category = {category} getCategory= {getCategory}/>
 			<QuestInsert onAddQuest={addQuest} />
 			<QuestList
-				quest={quest}
-				key={quest.key}
+				quest={categorized}
+				key={categorized.key}
 				onCheck={checkQuest}
 				onDelete={deleteQuest}
 			/>

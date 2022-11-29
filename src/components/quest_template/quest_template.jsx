@@ -13,6 +13,10 @@ const QuestTemplate = (props) => {
 	const [category, setCategory] = useState(categoryList[0]);
 
 	const addQuest = useCallback((questName) => {
+		if(questName.trim() === ""){
+			return;
+		}
+
 		setQuest((quest) => [
 			...quest,
 			{ questName, check: false, id: Date.now() },

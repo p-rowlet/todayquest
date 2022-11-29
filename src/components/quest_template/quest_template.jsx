@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import QuestCategory from "../quest_category/quest_category";
 import QuestInsert from "../quest_Insert/quest_insert";
 import QuestList from "../quest_list/quest_list";
 import styles from "./quest_template.module.css";
@@ -49,6 +50,7 @@ const QuestTemplate = (props) => {
 			<header className={styles.title}>
 				<h1>Today Quest</h1>
 			</header>
+			<QuestCategory/>
 			<QuestInsert onAddQuest={addQuest} />
 			<QuestList
 				quest={quest}

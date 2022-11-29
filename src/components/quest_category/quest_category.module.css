@@ -1,0 +1,24 @@
+@value titleColor, titleColor3, bodyColor from '../../common/color.css';
+
+.category{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: bodyColor;
+    padding: 10px 20px 0 10px;
+    border-bottom: titleColor3 solid 1px;
+}
+
+.category button{
+    cursor: pointer;
+    background-color: bodyColor;
+    border: none;
+    padding : 10px 15px;
+    border-bottom: 3px solid bodyColor;
+}
+
+.category button:hover, .category.active{
+    border-bottom: 3px solid titleColor;
+}

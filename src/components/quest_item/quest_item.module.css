@@ -1,24 +1,23 @@
-@value bodyColor from '../../common/color.css';
-
 .questitem{
     display: flex;
     flex-direction: row;
-    border-top: 1px solid rgb(235, 235, 235);
+    border-top: 1px solid var(--itemHoverColor);
     padding: 0.4rem 1.2rem;
 }
 
 
 .questitem:hover{
-    background-color: rgb(235, 235, 235);
+    background-color: var(--itemHoverColor);
 }
 
 .questitem svg{
     align-self: center;
     cursor: pointer;
+    color: var(--textColor);
 }
 
 .questitem svg:hover{
-    color : rgb(126, 126, 126);
+    color :  var(--iconHoverColor);
 }
 
 .questtext{
@@ -28,7 +27,7 @@
 }
 
 .questcheck{
-    color:rgb(126, 126, 126);
+    color: var(--iconHoverColor);
     text-decoration : line-through;
 }
 

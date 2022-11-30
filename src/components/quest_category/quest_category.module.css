@@ -1,24 +1,40 @@
-@value titleColor, titleColor3, bodyColor from '../../common/color.css';
-
 .category{
     box-sizing: border-box;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: flex-start;
-    background-color: bodyColor;
+    justify-content: space-between;
+    background-color: var(--bodyColor);
     padding: 10px 20px 0 10px;
-    border-bottom: titleColor3 solid 1px;
+    border-bottom: var(--titleColor3) solid 1px;
 }
 
-.category button{
+.btnset button{
     cursor: pointer;
-    background-color: bodyColor;
+    background-color: var(--bodyColor);
     border: none;
     padding : 10px 15px;
-    border-bottom: 3px solid bodyColor;
+    border-bottom: 3px solid var(--bodyColor);
+    color: var(--textColor);
 }
 
-.category button:hover, .category .active{
-    border-bottom: 3px solid titleColor;
+.btnset button:hover, .category .active{
+    border-bottom: 3px solid var(--titleColor);
+}
+
+
+.darkmode > button{
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    padding:0;
+    border: none;
+    background-color: var(--bodyColor);
+    border-radius: 10px;
+    cursor: pointer;
+    color : var(--textColor);
+}
+
+.darkmode > button:hover{
+    background-color: var(--titleColor3);
 }

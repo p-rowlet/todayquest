@@ -1,7 +1,6 @@
-@value bodyColor from '../../common/color.css';
-
 .list{
-    background-color: bodyColor;
+    background-color: var(--bodyColor);
+    color: var(--textColor);
     display: flex;
     flex-direction: column;
     width : 100%;

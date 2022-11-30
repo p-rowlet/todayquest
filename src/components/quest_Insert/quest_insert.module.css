@@ -1,9 +1,7 @@
-@value bodyColor, titleColor2, titleColor3 from '../../common/color.css';
-
 .addform {
 	display: flex;
 	align-self: stretch;
-	background-color: bodyColor;
+	background-color: var(--bodyColor);
 }
 
 .addinput {
@@ -13,6 +11,8 @@
 	border: none;
 	outline: none;
 	padding: 0.5rem;
+	background-color: var(--bodyColor);
+	color: var(--textColor);
 }
 
 .addbutton {
@@ -20,12 +20,12 @@
 	width: 3rem;
 	font-weight: bolder;
 	font-size: 1.4rem;
-	color: bodyColor;
+	color: white;
 	border: none;
 	outline: none;
-	background-color: titleColor2;
+	background-color: var(--titleColor2);
 }
 
 .addbutton:hover {
-	background-color: titleColor3;
+	background-color: var(--titleColor3);
 }

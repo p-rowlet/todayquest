@@ -1,26 +1,30 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import QuestCategory from "../quest_category/quest_category";
 import QuestInsert from "../quest_Insert/quest_insert";
 import QuestList from "../quest_list/quest_list";
 import styles from "./quest_template.module.css";
 
 const QuestTemplate = (props) => {
-	const [quest, setQuest] = useState([
-		
-	]);
+	const [quest, setQuest] = useState(() =>
+		"todayquest" in localStorage
+			? JSON.parse(localStorage.getItem("todayquest"))
+			: []
+	);
 
-	const categoryList =  ["All", "Working", "Complete"]
+	useEffect(() => {
+		localStorage.setItem("todayquest", JSON.stringify(quest));
+	}, [quest]);
+
+	const categoryList = ["All", "Working", "Complete"];
 	const [category, setCategory] = useState(categoryList[0]);
 
 	const addQuest = useCallback((questName) => {
-		if(questName.trim() === ""){
+		if (questName.trim() === "") {
 			return;
 		}
 
-		setQuest((quest) => [
-			...quest,
-			{ questName, check: false, id: Date.now() },
-		]);
+		const newData = { questName, check: false, id: Date.now() };
+		setQuest((quest) => [...quest, newData]);
 	}, []);
 
 	const deleteQuest = useCallback((questItem) => {
@@ -43,31 +47,31 @@ const QuestTemplate = (props) => {
 	const questCheckAll = useCallback(() => {
 		setQuest((quest) =>
 			quest.map((item) => {
-				return {...item, check : true};
+				return { ...item, check: true };
 			})
 		);
 	}, []);
 
 	const questDeleteAll = useCallback(() => {
 		setQuest([]);
-	},[]);
+	}, []);
 
-	const getCategory = useCallback((category)=>{
+	const getCategory = useCallback((category) => {
 		setCategory(category);
-	},[])
+	}, []);
 
-	const categozingItem = useCallback((category, quest)=>{
-		switch(category){
-			case "All" : 
+	const categozingItem = useCallback((category, quest) => {
+		switch (category) {
+			case "All":
 				return quest;
 			case "Working":
-				return quest.filter(quest => quest.check === false);
+				return quest.filter((quest) => quest.check === false);
 			case "Complete":
-				return quest.filter(quest => quest.check === true);
+				return quest.filter((quest) => quest.check === true);
 			default:
 				throw new Error("잘못된 분류입니다");
 		}
-	},[]);
+	}, []);
 
 	const categorized = categozingItem(category, quest);
 
@@ -76,7 +80,7 @@ const QuestTemplate = (props) => {
 			<header className={styles.title}>
 				<h1>Today Quest</h1>
 			</header>
-			<QuestCategory category = {category} getCategory= {getCategory}/>
+			<QuestCategory category={category} getCategory={getCategory} />
 			<QuestInsert onAddQuest={addQuest} />
 			<QuestList
 				quest={categorized}

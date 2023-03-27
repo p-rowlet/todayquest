@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from "react";
+import React, { memo,  useRef } from "react";
 import styles from "./quest_insert.module.css";
 
 const QuestInsert = memo(({ onAddQuest }) => {

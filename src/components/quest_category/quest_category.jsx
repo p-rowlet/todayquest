@@ -1,19 +1,19 @@
-import React, { useContext } from "react";
+import React, { memo, useCallback, useContext } from "react";
 import { DarkmodeContext } from "../../context/darkmode_context";
 import styles from "./quest_category.module.css";
 
-const QuestCategory = ({ category, getCategory }) => {
-    const {darkmode, toggleDarkmode} = useContext(DarkmodeContext);
+const QuestCategory = memo(({ category, getCategory }) => {
+	const { darkmode, toggleDarkmode } = useContext(DarkmodeContext);
 
-	const allClick = () => {
+	const allClick = useCallback(() => {
 		getCategory("All");
-	};
-	const workingClick = () => {
+	}, [getCategory]);
+	const workingClick = useCallback(() => {
 		getCategory("Working");
-	};
-	const completeClick = () => {
+	}, [getCategory]) ;
+	const completeClick = useCallback(() => {
 		getCategory("Complete");
-	};
+	}, [getCategory]) ;
 
 	return (
 		<nav className={styles.category}>
@@ -43,11 +43,11 @@ const QuestCategory = ({ category, getCategory }) => {
 			</div>
 			<div className={styles.darkmode}>
 				<button onClick={() => toggleDarkmode()}>
-                    {darkmode === true? <span>🌞</span> : <span>🌙</span>}
+					{darkmode === true ? <span>🌞</span> : <span>🌙</span>}
 				</button>
 			</div>
 		</nav>
 	);
-};
+})
 
 export default QuestCategory;
